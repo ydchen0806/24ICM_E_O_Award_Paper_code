@@ -1,0 +1,679 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% MCM/ICM LaTeX Template %%
+%% 2021 MCM/ICM           %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\geometry{left=1in,right=0.75in,top=1in,bottom=1in}
+\usepackage{url}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Replace ABCDEF in the next line with your chosen problem
+% and replace 1111111 with your Team Control Number
+\newcommand{\Problem}{E}
+\newcommand{\Team}{xxxxxx}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{newtxtext}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{newtxmath} % must come after amsXXX
+
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\lhead{Team \Team}
+\rhead{}
+\cfoot{}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}{Definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%================================
+\usepackage{enumerate}%\item 需要
+\usepackage{tabularx}% \table 
+\usepackage{booktabs}% 	\toprule
+\usepackage{float}%图片浮动
+\usepackage{graphicx}
+\usepackage{bm}% reference
+\usepackage{indentfirst} 
+\setlength{\parindent}{2em} %2em代表首行缩进两个字符
+\usepackage{listings}%代码
+%================================
+\begin{document}
+%\graphicspath{{.}}  % Place your graphic files in the same directory as your main document
+%\DeclareGraphicsExtensions{.pdf, .jpg, .tif, .png}
+\thispagestyle{empty}
+\vspace*{-16ex}
+\centerline{\begin{tabular}{*3{c}}
+	\parbox[t]{0.3\linewidth}{\begin{center}\textbf{Problem Chosen}\\ \Large \textcolor{black}{\Problem}\end{center}}
+	& \parbox[t]{0.3\linewidth}{\begin{center}\textbf{2024\\ MCM/ICM\\ Summary Sheet}\end{center}}
+	& \parbox[t]{0.3\linewidth}{\begin{center}\textbf{Team Control Number}\\ \Large \textcolor{black}{\Team}\end{center}}	\\
+	\hline
+\end{tabular}}
+
+%==========================================
+\renewcommand{\abstractname}{Summary}
+
+%=====================================
+%%%%%%%%%%% Begin Summary %%%%%%%%%%%
+% Enter your summary here replacing the (red) text
+% Replace the text from here ...
+
+\begin{center}
+	\large\textbf{  {Sustainability Study of the Property Insurance Industry Under Extreme Weather Conditions}}
+	\end{center}
+\begin{abstract}
+
+In the context of global climate change, the increasing frequency of extreme weather events poses significant challenges to the property insurance industry. This study presents a comprehensive analytical framework addressing the sustainability of the property insurance sector under extreme weather conditions. Initially, we employed a Multi-Scale Geographically Weighted Regression (\textbf{MGWR}) model, integrating climate data, geographical location, and insurance claims data, to analyze the impact of extreme weather on insurance payouts. The model results indicate that considering spatial heterogeneity allows for more accurate predictions of insurance claim amounts, offering insurance companies a scientific risk assessment tool. For instance, we observed a significant positive correlation between insurance payouts and the probability of extreme environmental events in certain high-risk areas.
+
+Addressing the \textbf{first issue}, we proposed a risk-based insurance pricing strategy that balances the long-term health of insurance companies with the financial burden on property owners. By incorporating a humanitarian adjustment coefficient and a profitability adjustment factor, our model prices insurance products at different risk levels, achieving a balance between social responsibility and economic efficiency. For example, our model predicted insurance amounts for California (a high-risk area) to be \textbf{\$20.1394 million} in 2023, with an anticipated increase to \textbf{\$31.0054} million by 2034.
+
+For the \textbf{second issue}, we developed community building and development strategies to adapt to risks posed by climate change. Using data standardization, entropy calculation, and weighting, we provided property owners with strategies to influence insurance company decisions, thereby reducing insurance costs. For example, we suggested communities could lower insurance costs by enhancing per capita GDP, controlling population density, improving healthcare quality, and supporting educational development.
+
+In addressing the \textbf{third issue}, we focused on the protection of historical landmarks, specifically the Statue of Liberty. Utilizing the MGWR model, combined with building conservation priorities, we assessed the protective needs of the Statue of Liberty. Our detailed protection plan provided the community with measures to mitigate the potential impacts of extreme weather on this cultural symbol. For example, the proposed protection measures included structural reinforcement, environmental monitoring system installation, and emergency response planning, with an estimated annual investment of about \textbf{\$2.5 million}.
+
+In summary, this study provides insurance companies with decision support for underwriting in extreme weather conditions and offers practical strategies for community and heritage conservation. Our framework emphasizes the importance of scientific analysis, community involvement, and multi-objective optimization, presenting a comprehensive approach to addressing the challenges posed by climate change.
+
+\textbf{Keywords}: Climate change, property insurance, risk assessment, community development, historical heritage protection, multi-scale geographically weighted regression
+\end{abstract}
+% to here
+%%%%%%%%%%% End Summary %%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage{
+\fontsize{10}{11}\selectfont
+\pagestyle{fancy}
+% Uncomment the next line to generate a Table of Contents
+\tableofcontents }
+\newpage
+\setcounter{page}{1}
+\rhead{Page \thepage\ }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Introduction}
+\subsection{Problem Background}
+\textit{"Nature is kind of a loving mother, but also a butcher in cold blood." —Victor Hugo.} It suggests that nature possesses both a generous aspect, bestowing survival and prosperity upon humanity, and a ruthless, unpredictable side. Through this expression, Hugo emphasizes the complexity of nature and its dual impact on humanity.
+The latest data indicates that the past seven years are poised to become the hottest seven years on record (WMO 2023). Due to climate change, more severe and frequent extreme weather events such as tropical cyclones, heatwaves, floods, and droughts are becoming the new norm. These extreme weather events have a significant impact on society, not only claiming approximately 35,000 lives annually but also causing substantial economic losses. For instance, in 2016, flash floods and storms in Germany, Belgium, and Switzerland resulted in \$2.2 billion in losses, with around 50\% of the costs covered by insurance companies \cite{hudson2020assessment}. The increasing number and intensity of natural disasters pose a growing burden on insurance and reinsurance companies, as they have experienced record-breaking losses from natural disasters over the past 15 years.
+
+The insurance industry has long warned about the escalating frequency and material damage caused by weather disasters on a global scale. This surge can be attributed to the rise in both the number and geographical extent of settlements in vulnerable areas, the accumulation of increasingly valuable and delicate assets in these regions, and the evident shifts in climate and the environment \cite{kron2019changes}. These factors have propelled a significant increase in property insurance premiums, highlighting the industry's dilemma characterized by a growing crisis in profitability for insurers and increasing challenges in affordability for property owners. Therefore, determining how to ensure the sustainability of property insurance through appropriate interventions will become one of the key questions and turning points in the future development of human society.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\linewidth]{figure/teasor2.png}
+    \caption{Insurance strategies are all you need}
+    % \label{fig:enter-label}
+\end{figure}
+\subsection{Problem Restatement}
+\textbf{Q1: Insurance Underwriting Strategies in a Changing Climate}: Developing a model to aid insurance companies in deciding whether to underwrite in areas increasingly affected by extreme weather events presents a complex challenge. This model must balance the long-term health of the insurance company with the financial burdens on property owners.
+
+\textbf{Q2: Community Construction and Development in the Face of Climate Risks}: Adapting to changing insurance environments requires a nuanced approach to assess the risks of building and developing in specific locations. Ensuring property resilience and sustainable community development in the face of these risks is pivotal.
+
+\textbf{Q3: Preservation of Historical Landmarks under Climate Threats}: Selecting a historical landmark and applying insurance and protection models to assess its value poses a unique challenge. For communities, this involves proposing a comprehensive protection plan, which includes recommended measures, timelines, and associated costs to safeguard these cultural treasures against the ravages of extreme weather.
+\subsection{Related Work}
+In addressing insurance industry pricing strategies under extreme weather conditions, current literature highlights several key strategies and methods. Firstly, insurance companies are enhancing their internal measures to more accurately assess and price risks. This includes developing enhanced predictive capabilities and integrating artificial intelligence with spatial imaging for more accurate asset vulnerability assessments. For instance, Canadian technology company Riskthinking. \cite{fraisse2006agclimate}
+
+Secondly, insurers are intensifying interactions with clients to raise risk awareness and promote effective mitigation measures. This involves risk consultancy, raising awareness of risks, and providing post-disaster services to build resilience. A study by JBA Risk Management emphasizes that even a 5\% enhancement in household preventative measures can significantly reduce losses. \cite{jarzabkowski2019insurance}
+
+Thirdly, product innovation in insurance is also a response to the new climate realities \cite{vermeulen2001organizing}. This includes adapting insurance products to cover a broader range of climate-related risks and developing policies more aligned with current and future climate conditions.
+
+Fourthly, insurers are collaborating with policymakers, regulatory bodies, and other industry stakeholders to adapt to the evolving climate realities. This includes advocating for regulatory changes, sharing data, and investing in climate-adaptive infrastructure projects \cite{mills2009global}.
+
+Additionally, the variability of climate risks renders traditional models based on historical data less reliable. This necessitates a shift towards predictive risk assessment methods. For instance, Risk Management Solutions (RMS) has adjusted its models to account for the changing frequency and severity of extreme weather events like hurricanes and floods \cite{weinkle2020experts}.
+
+Finally, insurers are focusing on building financial resilience by considering low-probability catastrophic events and diversifying their investment portfolios. This involves using risk models that hypothesize non-fixed risks and reducing reliance on historical data, thereby enabling insurers to better understand and measure the impact of climate risks on their financial resilience \cite{sheehan2023benefits}.
+
+\subsection{Our work}
+\begin{enumerate}[\bf 1.]
+	\item In the first study, we developed a Multiscale Geographically Weighted Regression (MGWR) model by integrating climatic factors, geographical locations, and financial data from insurance companies. This model is designed to provide a scientific basis for property insurance pricing. Initially, Principal Component Analysis (PCA) was employed to reduce the dimensions of climate data. Subsequently, we utilized the MGWR model to analyze the impact of spatial heterogeneity on insurance claims. Finally, by applying asset pricing models and long-term health development models, we offered strategies for risk management and capital allocation for insurance companies.
+	\item We introduced community-based protection strategies to complement the insurance model, focusing on the role of community administrators and property owners in mitigating risks. The community protection model incorporates protective measures and calculates the optimal level of intervention based on risk and cost considerations. For property owners, we employed the Improved Entropy Weight Method to determine the Humanitarian Adjustment Coefficient (HIC), guiding them on strategies to influence insurance decisions and reduce potential losses.
+	\item Our work also addressed the unique challenge of preserving historical landmarks under climate threats. By adapting the MGWR model to prioritize building conservation, we assessed the protection needs of iconic structures like the Statue of Liberty. We considered architectural factors and geographic coordinates to determine the required level of protection and proposed a comprehensive protection plan, including recommended measures, timelines, and associated costs to safeguard these cultural treasures against extreme weather events.
+\end{enumerate}
+
+
+\section{Preparation of the Models}
+
+\subsection{Assumptions}
+To simplify our model and eliminate the complexity, we make the following main assumptions in this literature. All assumptions will be re-emphasized once they are used in the construction of our model:
+\begin{enumerate}[\bfseries 1.]
+	\item \textbf{Data Completeness and Quality: }The official dataset contains all necessary information required for the research, eliminating the need for supplementary data. This dataset comprehensively covers the required variables and is of high quality, ensuring the reliability of the analysis.
+	\item \textbf{Spatial Heterogeneity in Extreme Weather Events:} There is a significant spatial heterogeneity in the impact of extreme weather events on insurance payouts across different geographical locations. This heterogeneity can be effectively captured by the Multi-Scale Geographically Weighted Regression (MGWR) model, leading to more accurate insurance pricing and risk assessment.
+	\item \textbf{Correlation of Socio-Economic Factors with Insurance Needs:} Socio-economic factors, such as per capita GDP, population density, and education levels, show a significant correlation with insurance demand and risk assessment. This underpins the validity of using the entropy weighting method to determine the Humanitarian Adjustment Coefficient (HAC), highlighting the importance of these factors in developing insurance strategies.
+\end{enumerate}
+\subsection{Notations}
+In this work, we use the nomenclature in  \textbf{Table \ref{sy}} in the model construction. Other nonefrequent-used symbols will be introduced once they are used.
+
+\begin{table}[ht]
+\centering
+\caption{List of Symbols and Abbreviations}
+\label{sy}
+\begin{tabular}{ll}
+\toprule[1.2pt]
+Symbol/Abbreviation & Explanation \\
+\hline
+MGWR & Multi-Scale Geographically Weighted Regression, a spatial analysis technique \\
+PCA & Principal Component Analysis, a statistical procedure \\
+HIC & Humanitarian Adjustment Coefficient, a factor in insurance pricing \\
+PR & Profitability Adjustment Factor, a factor in insurance pricing \\
+AGO & Accumulated Generation Operation, a method for data analysis \\
+GM & Grey Model, a forecasting method \\
+SEF & Socio-economic Factor, indicators of socio-economic status \\
+GDP & Gross Domestic Product, a measure of economic activity \\
+ENT & Entropy, a measure of disorder or randomness \\
+W & Weight, a value assigned to each socio-economic factor \\
+HI & Humanitarian Impact, a measure of the social effect of insurance strategies \\
+$Z$ & Standardized value \\
+$\mu$ & Mean of the dataset \\
+$\sigma$ & Standard deviation of the dataset \\
+$PCA_{Factor}^{ik}$ & Principal components, derived from PCA \\
+$\mathcal{P}_i$ & Probability of extreme weather events \\
+$\mathcal{I}_i$ & Insurance payout amount \\
+$(u_i, v_i)$ & Geographic coordinates \\
+$\epsilon_i$ & Error term in the regression model \\
+$\beta_k\left(u_i, v_i\right)$ & Location-specific coefficients in the regression model \\
+\bottomrule[1.2pt]
+\end{tabular}
+\end{table}
+
+\section{Introduction}
+With climate change intensifying, the frequency of extreme weather events poses significant challenges to the insurance industry. This study aims to develop a combined model incorporating climate science and financial theories to ensure the sustainability of property insurance systems and the long-term health of insurance companies.
+
+\section{Insurance Strategy Formulation Model}
+In our study, we evaluated the assumptions of risk in the design of insurance policies across specific regions. Our methodology encompassed the aggregation of environmental factors, followed by employing a Multi-Scale Geographically Weighted Regression (MGWR) model to conduct regression analysis on the loss amounts. This model accounts for spatial heterogeneity, offering convenient scalability across multiple regions. Insurance coverage amounts were determined in accordance with the risk-bearing capacity of each region, as identified by a Risk-Based Generalized Pricing Model. Moreover, we implemented a humanitarian low-threshold setting to ensure fundamental safety protection for residents. This approach not only aligns with actuarial principles but also embeds an element of social responsibility in the formulation of insurance strategies.
+\subsection{Data Collection}
+\begin{itemize}
+\item \textbf{Climatic Factors:} We collected climatic data for the United States region from ERA5-Land \footnote{\url{https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-land?tab=overview}}, which provides data at an hourly resolution with a spatial resolution of 0.1° x 0.1° latitude and longitude. This dataset includes but is not limited to 96 variables such as precipitation, temperature, and soil moisture. We segmented the region based on the latitude and longitude of the United States and collected climate data spanning from 2013 to 2023, covering the past decade.
+\item \textbf{Geographical Data:} We gathered latitude and longitude coordinates of extreme weather events in the United States region from the Global Disaster Data Platform \footnote{\url{https://www.gddat.cn/newGlobalWeb/#/home}}. This dataset includes event dates, states, as well as latitude and longitude information, along with financial losses.
+\item \textbf{Insurance Data:} We obtained annual payout and insurance premium amounts from NAIC \footnote{\url{https://content.naic.org/}}, which serve as the dependent variables for our regression model.
+\end{itemize}
+
+\subsection{Data Preprocessing}
+\begin{itemize}
+\item \textbf{Standardization:} To ensure comparability and analytical precision, we transformed all variables into a uniform, dimensionless scale. This was achieved by applying the standardization formula.
+\begin{equation}
+Z=\frac{(X-\mu)}{\sigma},
+\end{equation}
+where $Z$ represents the standardized value, $X$ is the original value, $\mu$ is the mean of the dataset, and $\sigma$ is the standard deviation.
+
+\item \textbf{Principal Component Analysis (PCA):} Given the high dimensionality of our climatic dataset, comprising 96 variables, we employed Principal Component Analysis (PCA) to distill this complexity into a more manageable form. The goal was to reduce these variables to four principal components, capturing the most significant variance in the dataset. PCA was executed using the following linear transformation:
+\begin{equation}
+  PCA(X) = U \Sigma V^T,
+\end{equation}
+where \( X \) denotes the original data matrix. In this formula, \( U \) and \( V \) are orthogonal matrices representing the eigenvectors, and \( \Sigma \) is a diagonal matrix consisting of eigenvalues. This transformation effectively captures the essence of the data in fewer dimensions, aiding in more efficient and insightful analysis. The decision to use PCA was driven by its ability to identify patterns in data and express the data in such a way as to highlight their similarities and differences.
+
+
+\item \textbf{Bivariate Spline Interpolation for Environmental Data:} Our methodology involves interpolating climatic data, which is in grid format, to match the latitude and longitude coordinates of insurance events. We employ Bivariate Spline Interpolation, which is mathematically represented as:
+\begin{equation}
+S(x, y) = \sum_{i=1}^{n} \sum_{j=1}^{m} a_{ij} B_{i}(x) C_{j}(y),
+\end{equation}
+where $S(x, y)$ is the interpolated value at a point $(x, y), B_i(x)$ and $C_j(y)$ are basis spline functions in the $\mathrm{x}$ and $\mathrm{y}$ directions, and $a_{i j}$ are the coefficients determined from the data. This technique allows us to accurately estimate environmental factors at any specific location.
+
+\item \textbf{Extreme Weather Event Identification:} In light of the incomplete records of extreme weather events, our approach incorporates a rigorous analysis of interpolated environmental data. Specifically, we focus on identifying potential extreme weather occurrences based on climatic thresholds. This involves comparing the interpolated environmental variables, such as precipitation levels, against established benchmarks indicative of extreme conditions. The mathematical formulation for this analysis is as follows:
+\begin{equation}
+E = \begin{cases}
+1, & \text{if } S(x, y) > T_{extreme} \\
+0, & \text{otherwise}
+\end{cases},
+\end{equation}
+where $E$ signifies the classification of an event as extreme weather, $S(x, y)$ represents the interpolated environmental value at a specific location, and $T_{\text {extreme }}$ is the threshold value that defines an extreme weather condition, such as a specific level of precipitation for torrential rain. This methodology ensures that even in cases where extreme weather is not officially recorded, our analysis can still identify and account for such events based on environmental data, thereby providing a more comprehensive understanding of the impact of extreme weather on insurance-related occurrences.
+\end{itemize}
+
+\subsection{Multi-Scale Geographically Weighted Regression (MGWR)}
+Multiscale Geographically Weighted Regression (MGWR) is an advanced spatial analysis technique that extends the traditional Geographically Weighted Regression (GWR) framework. Unlike GWR, which assumes a single bandwidth for all covariates, MGWR allows for different spatial scales (bandwidths) for each covariate, offering a more nuanced understanding of spatial relationships. This flexibility makes MGWR particularly suited for complex spatial datasets where relationships vary across space and at different scales. The MGWR model can be expressed as follows:
+\begin{equation}
+y_i = \beta_0(u_i,v_i) + \sum_{k=1}^{K} \beta_k(u_i,v_i)X_{ik} + \epsilon_i,
+\end{equation}
+Here, $y_i$ represents the dependent variable for the $i$-th location, $\left(u_i, v_i\right)$ are the geographic coordinates, $X_{i k}$ are the independent variables, $\beta_k\left(u_i, v_i\right)$ are the location-specific coefficients for the $k$-th covariate, and $\epsilon_i$ is the error term.
+
+In our study, we apply the MGWR model to investigate the relationship between insurance payout amounts and various environmental factors, post-PCA transformation. Our model is formulated as follows:
+\begin{equation}
+\mathcal{I}_i = \beta_0(u_i,v_i) + \sum_{k=1}^{4} \beta_k(u_i,v_i)PCA_{Factor}^{ik} + \beta_5(u_i,v_i)\mathcal{P}_i + \epsilon_i.
+\label{equ:MGWR}
+\end{equation}
+In this model \ref{equ:MGWR}, 
+$\mathcal{I}_i$ is the dependent variable representing the insurance payout amount at location $i$.
+$PCA_{Factor}^{ik}$ are the four principal components of the environment derived from the PCA, serving as independent variables.
+$\mathcal{P}_i$ is an additional independent variable representing the probability of extreme environmental events at location $i$.
+$\beta_0\left(u_i, v_i\right)$ and $\beta_k\left(u_i, v_i\right)$ are the geographically varying coefficients for the intercept and each covariate, respectively.
+
+
+
+\subsection{Risk-Based Insurance Pricing}
+We extend the traditional insurance pricing model by integrating both humanitarian considerations and profitability objectives. This novel approach addresses the dual need for ethical responsibility and economic viability in insurance pricing. We propose a comprehensive multi-objective optimization model, as detailed below:
+
+The model is formulated to balance the trade-offs between humanitarian impacts and profitability. The primary components of the model include a humanitarian adjustment coefficient, profitability adjustment factor, and a final premium calculation that incorporates multi-objective optimization. The mathematical representation is as follows:
+
+\begin{enumerate}
+\item \textbf{Humanitarian Adjustment Coefficient ($H_i$):} This coefficient adjusts the insurance premium based on socio-economic factors relevant to each geographical location. It is calculated as:
+\begin{equation}
+H_i = g(SEF_i),
+\label{equ:h}
+\end{equation}
+where $g$ is a function that reflects adjustments based on local socio-economic factors $S E F_i$.
+
+\item \textbf{Profitability Adjustment Factor (\( P \)):} To ensure the financial sustainability of the insurance product, a profitability factor is incorporated, calculated based on historical data and targeted profit margins:
+\begin{equation}
+P = HPR + TPM.
+\end{equation}
+where $H P R$ represents the Historical Payout Ratio and $T P M$ is the Target Profit Margin.
+
+\item \textbf{Final Premium Calculation:} The final premium for a policyholder, denoted as $F P_i$, is determined by the MGWR model's risk score $\left(R S_i\right), H_i$, and $P$ :
+\begin{equation}
+FP_i = BP \times (1 + \theta \times RS_i) \times H_i \times P,
+\end{equation}
+where $B P$ represents the Base Premium and $\theta$ is the scaling factor for the risk score impact.
+\end{enumerate}
+
+\subsection{Multi-Objective Optimization}
+
+To optimally balance the humanitarian and profitability objectives, a multi-objective optimization strategy is employed. This could involve techniques like linear programming or genetic algorithms to find an equilibrium point that satisfies both objectives without compromising either:
+\begin{equation}
+\text{Optimize} \quad (H_i, P) \quad \text{to balance} \quad (HI, PR),
+\end{equation}
+\text { where } HI \text { stands for Humanitarian Impact and } PR \text { for Profitability. }
+
+\subsection{Future Data Prediction}
+\textbf{Accumulated Generation Operation (AGO)}
+Initially, the pre-processed data set, denoted as $X^*$, undergoes an Accumulated Generation Operation to stabilize fluctuations and reveal intrinsic trends, defined as $Y^{(1)}(i)=\sum_{k=1}^i X^*(k)$ for $i=1,2, \ldots, n$.
+
+\textbf{Grey Model Construction (GM Construction)}
+An improved GM $(1,1)$ model is constructed, with its differential equation formulated as $\frac{d Y^{(1)}}{d t}+a Y^{(1)}=b$. This model assumes a linear relationship between the sequences of $Y^{(1)}$, where model parameters $a$ and $b$ are estimated using the least squares method: 
+\begin{equation}
+    \left[\begin{array}{l}a \\ b\end{array}\right]=\left(B^T B\right)^{-1} B^T Y_N,
+\end{equation}
+with $B$ as the data matrix based on $Y^{(1)}$ and $Y_N$ as the data vector.
+
+\textbf{Model Solution and Forecasting}
+The solution of the model is given by 
+\begin{equation}
+    \hat{Y}^{(1)}(k+1)=\left(X(0)-\frac{b}{a}\right) e^{-a(k)}+\frac{b}{a},
+\end{equation}
+utilized for forecasting future data points $k$ (e.g., 2024-2034). Subsequently, an inverse accumulated generation operation is conducted to obtain the actual forecast values: $\hat{X}(k)=\hat{Y}^{(1)}(k)-\hat{Y}^{(1)}(k-1)$.
+
+\textbf{Validation and Adjustment}
+The model is validated using historical data, comparing predicted values with actual observations to assess the model's efficacy and accuracy. Parameters are adjusted as needed based on forecast accuracy.
+% \section{Model Solution}
+\subsection{Solution of Insurance Strategy}
+
+
+\subsubsection{Historical insurance data and climate data.}
+We conducted a statistical analysis of extreme weather occurrences in the United States over the past 20 years. We visualized the probabilities of drought and flood disasters, as illustrated in Figure \ref{fig:etrea}. The results indicate a higher likelihood of drought disasters in the western regions of the United States, while the probability of flood disasters is higher in the southeastern regions of the country.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\linewidth]{figure/weather_a.pdf}
+    \caption{Probability statistics of extreme weather occurrences in American history.}
+    \label{fig:etrea}
+\end{figure}
+
+\subsubsection{Insurance Strategies for Coping with the Rise in Extreme Weather Events.}
+In the methodology described above, we initially employed Principal Component Analysis (PCA) on a comprehensive dataset of 96 environmental factors. This PCA process yielded four principal components, each encapsulating distinct and crucial aspects of the meteorological and surface variables. The first principal component predominantly captured vital data related to evaporation, precipitation, potential evaporation, and surface heat flux, offering insights into the core dynamics of hydrological circulation and energy exchange processes. The second principal component primarily encompassed variables associated with radiation, surface temperature, surface mixed layer depth, surface heat flux, and longwave radiation downward, highlighting the pivotal role of surface energy balance and the complex mechanisms of radiation transfer. The third principal component was primarily informative about precipitation, soil moisture, and surface water layer moisture, elucidating the impact of precipitation and soil moisture on water resources and ecosystems. Lastly, the fourth principal component was chiefly concerned with variables linked to surface temperature, soil temperature, shortwave radiation downward, and longwave radiation downward, uncovering the seasonal and regional variations in surface temperature and energy transfer, with explained variances of 42.1\%, 16.6\%, 13.7\%, and 10.6\% respectively.
+
+Subsequently, we utilized latitude and longitude data, the four environmental PCA factors, and population data as independent variables to model the losses due to extreme weather events. Leveraging the Improved Grey Prediction Model, we further forecasted the environmental factors for the next decade and predicted the resultant losses from extreme weather events for the same period. The predictive outcomes are illustrated in Figure \ref{fig:pred}.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\linewidth]{figure/weather.pdf}
+    \caption{Future extreme weather and predictions for the insurance industry.}
+    \label{fig:pred}
+\end{figure}
+
+Following this, based on our proposed humanitarian risk-based insurance model, we evaluated the feasibility of undertaking insurance coverage. The results of our model are presented in the accompanying table \ref{tab>pred_with_fluctuations}, demonstrating the practical application and effectiveness of our approach in assessing insurance strategies in the context of extreme weather events.
+
+\begin{table}[htbp]
+\centering
+\caption{Insurance Amount Forecast by State with Fluctuations for 2023-2034}
+\fontsize{8}{9}\selectfont
+\begin{tabular}{@{}cccc@{}}
+\toprule[1.2pt]
+Year & California (High Risk) & Texas (Medium Risk) & Nebraska (Low Risk) \\
+\midrule
+2023 & 2013.94 & 1452.65 & 545.72 \\
+2024 & 2052.5 & 1519.88 & 493.66 \\
+2025 & 2177.5 & 1614.99 & 479.27 \\
+2026 & 2272.32 & 1654.49 & 489.67 \\
+2027 & 2423.65 & 1672.04 & 574.75 \\
+2028 & 2517.67 & 1758.93 & 560.37 \\
+2029 & 2639.22 & 1830.94 & 590.71 \\
+2030 & 2658.69 & 1800.65 & 592.97 \\
+2031 & 2792.19 & 1930.58 & 583.62 \\
+2032 & 2852.98 & 1969.81 & 637.31 \\
+2033 & 2971.86 & 1984.03 & 587.85 \\
+2034 & 3100.54 & 2015.55 & 615.2 \\
+\bottomrule[1.2pt]
+\end{tabular}
+\label{tab>pred_with_fluctuations}
+\end{table}
+
+We segmented the United States into three distinct insurance strategy categories based on demographic, economic, and environmental risk factors. These categories were High Risk, Medium Risk, and Low Risk, each tailored to the specific needs and characteristics of various states.
+
+\begin{enumerate}
+    \item \textbf{High Risk Strategy}
+This strategy is designed for states with dense populations, robust economies, and a high frequency of extreme weather events. Such states require the highest level of insurance coverage to mitigate the substantial risks they face. For instance, California, characterized by its large population and strong economy, frequently experiences wildfires, making it a prime candidate for the High Risk strategy.
+\item \textbf{Medium Risk Strategy}
+States falling under this category have moderate population sizes and economic scales, or they experience a moderate frequency of extreme weather events. Texas, for example, with its significant population and economic strength, faces moderate risks, such as occasional hurricanes. Similarly, Nebraska, with a moderate population and economic size, also experiences moderate weather risks, making both states suitable for the Medium Risk strategy.
+\item \textbf{Low Risk Strategy}
+The Low Risk strategy is applicable to states with smaller populations, lower economic scales, and fewer occurrences of extreme weather events. Vermont, for example, with its smaller population and economic size, coupled with low risk of extreme weather events, is an ideal candidate for this strategy.
+\end{enumerate}
+
+
+\subsubsection{Compare with North America and Asia.}
+We conducted a comparative analysis of insurance strategies between Asia and North America. By adapting the MGWR (Multiscale Geographically Weighted Regression) model with modified latitude and longitude information along with corresponding population data, we derived the respective insurance strategies for countries in Asia. The specific strategies are outlined in Table \ref{asd}.
+
+In this study, we aimed to evaluate the suitability of insurance strategies in response to varying demographic, economic, and environmental factors in both regions. The MGWR model allowed us to capture the spatial heterogeneity and adapt insurance coverage accordingly.
+\begin{table}[htbp]
+\centering
+\caption{Insurance Amount Forecast by Asian Country with Fluctuations for 2024-2034}
+\fontsize{8}{9}\selectfont
+\begin{tabular}{@{}ccccccc@{}}
+\toprule[1.2pt]
+Year & China (High Risk) & India (High Risk) & Japan (Medium Risk) & Korea (Medium Risk) & Singapore (Low Risk) & Malaysia (Low Risk) \\
+\midrule
+2024 & 2455.24 & 2183.38 & 1764.22 & 1610.89 & 798.61 & 689.12 \\
+2025 & 2558.72 & 2274.52 & 1879.01 & 1652.71 & 836.85 & 677.33 \\
+2026 & 2690.72 & 2350.17 & 1852.12 & 1730.93 & 827.45 & 735.68 \\
+2027 & 2760.77 & 2493.63 & 1991.12 & 1731.53 & 813.18 & 767.32 \\
+2028 & 2940.12 & 2558.76 & 2007.34 & 1789.82 & 905.42 & 763.61 \\
+2029 & 2953.82 & 2709.76 & 2026.53 & 1876.93 & 868.15 & 768.91 \\
+2030 & 3103.62 & 2756.99 & 2133.78 & 1901.28 & 952.02 & 778.82 \\
+2031 & 3183.22 & 2881.55 & 2176.88 & 1968.48 & 981.36 & 852.83 \\
+2032 & 3335.21 & 2994.83 & 2184.35 & 2013.84 & 975.81 & 811.28 \\
+2033 & 3365.97 & 3140.54 & 2280.15 & 2066.67 & 947.01 & 865.19 \\
+2034 & 3483.72 & 3159.28 & 2270.69 & 2139.01 & 983.69 & 872.91 \\
+\bottomrule[1.2pt]
+\end{tabular}
+\label{asd}
+\end{table}
+
+Based on the model predictions for Asia and North America, it is evident that Asia exhibits a greater degree of variability in its insurance strategies compared to North America, with geographical factors playing a significant role in the divergence between the two regions. The vast expanse of Asia, with its diverse geography and climate, subjects its countries to a wide array of natural disaster risks, including earthquakes, typhoons, and floods. Consequently, insurance strategies in Asian nations must be more diversified to accommodate these varied risks. In contrast, the United States, situated in a relatively stable geographical zone, may have more targeted insurance strategies for specific types of risks, such as natural disasters. Environmental factors also influence insurance strategies in both regions. Asian countries face distinct environmental challenges, including climate change, pollution, and resource scarcity, which could lead to an increased demand for specific environmental insurance products.
+
+
+\section{Community Building Protection Strategies}
+As previously mentioned, we have categorized different cities into three risk zones. However, in the event of significant natural disasters or exceptionally low risk in certain areas, insurance coverage may not fully mitigate the losses. Therefore, community administrators and property owners should also implement specific strategies to enhance the level of protective measures.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.8\linewidth]{figure/without.png}
+    \caption{Self-Reliance of Property Owners and Communities in the Face of Insufficient Insurance Coverage.}
+    % \label{fig:enter-label}
+\end{figure}
+\subsection{Community Protection Model}
+We introduce the protection factor of community administrators into the MGWR model, expanding its form as follows:
+\begin{equation}
+    y_i = \beta_0(u_i, v_i) + \sum_{k=1}^{K} \beta_k(u_i, v_i)X_{ik} + \beta_{P}(u_i, v_i)P_i + \epsilon_i.
+\end{equation}
+Here, \(y_i\) represents the dependent variable for location \(i\), \((u_i, v_i)\) are the geographic coordinates, \(X_{ik}\) are independent variables, \(\beta_k(u_i, v_i)\) are location-specific coefficients for covariate \(k\), \(P_i\) is the level of protective measures for location \(i\), and \(\epsilon_i\) is the error term.
+
+Our goal is to minimize risk \(D_i\) and cost \(C_i\). Risk can be defined as:
+
+\begin{equation}
+D_i = 1 - \frac{R_i}{R_{\text{max}}},
+\end{equation}
+where \(R_i\) is the community's capacity to withstand risk at location \(i\), and \(R_{\text{max}}\) is the maximum capacity to withstand risk.
+
+The cost \(C_i\) is given by:
+
+\begin{equation}
+C_i = C_{\text{base}} + \alpha \cdot P_i \cdot C_{\text{protect}},
+\end{equation}
+where \(C_{\text{base}}\) is the base cost, \(C_{\text{protect}}\) is the cost per unit of protective measure, and \(\alpha\) is an adjustment coefficient.
+
+Our objective is to minimize the following loss function:
+\begin{equation}
+    L = \sum_{i} (D_i + \lambda \cdot C_i).
+\end{equation}
+Here, \(\lambda\) represents the trade-off coefficient between risk and cost.
+
+This protection model allows community leaders to determine the level of protective measures based on their specific circumstances and needs. Adjusting \(P_i\) enables communities to make decisions considering both risk and economic factors.
+
+\subsection{Property Owner Strategies}
+For property owners, we utilize the Improved Entropy Weight Method to determine the Humanitarian Adjustment Coefficient (HIC, as shown in Equation \ref{equ:h}). Specifically, our modeling process is as follows:
+
+\subsubsection{Data Normalization}
+Firstly, we normalize the collected socio-economic factor (SEF) data to eliminate scale differences. These data encompass 12 resident indicators, including population size, per capita GDP, and residents' educational attainment, among others. The normalized value $ SEF_{ij}' $ is calculated as:
+\begin{equation}
+    SEF_{ij}' = \frac{SEF_{ij} - \min(SEF_j)}{\max(SEF_j) - \min(SEF_j)},
+\end{equation}
+where $ SEF_{ij} $ is the value of the $ j $-th socio-economic factor for the $ i $-th location, and $ \min(SEF_j) $ and $ \max(SEF_j) $ are the minimum and maximum values of the $ j $-th factor across all locations.
+
+\subsubsection{Entropy Calculation}
+Calculate the entropy value $ E_j $ for each indicator to measure its discriminative power. The entropy value is given by:
+\begin{equation}
+    E_j = -\frac{1}{\ln(n)} \sum_{i=1}^{n} p_{ij} \ln(p_{ij}),
+\end{equation}
+where $ p_{ij} = \frac{SEF_{ij}'}{\sum_{k=1}^{n} SEF_{kj}'} $ is the proportion of the $ j $-th factor at the $ i $-th location, and $ n $ is the total number of locations.
+
+\subsubsection{Weight Calculation}
+Determine the weights $ w_j $ for each indicator based on their entropy values:
+\begin{equation}
+    w_j = \frac{1 - E_j}{\sum_{k=1}^{m} (1 - E_k)},
+\end{equation}
+where $ m $ is the total number of indicators.
+
+\subsubsection{Weighted Average}
+Compute the weighted average of the normalized socio-economic indicators to obtain a comprehensive index:
+\begin{equation}
+    SEF_i'' = \sum_{j=1}^{m} w_j \cdot SEF_{ij}'
+\end{equation}
+
+
+\subsubsection{Construction of the $ g $ Function}
+Assuming the $ g $ function is linear, it can be expressed as:
+\begin{equation}
+    H_i = a + b \cdot SEF_i'',
+\end{equation}
+where $ a $ and $ b $ are model parameters to be estimated.
+
+\subsubsection{Model Training and Validation}
+Train the $ g $ function using historical data by minimizing the difference between actual and predicted premiums to determine the values of $ a $ and $ b $.
+
+\subsection{Solution for Property Owners and Community Models}
+\subsubsection{Strategies Implemented by the Community}
+As mentioned earlier, the strategies adopted by the community essentially constitute a multi-objective optimization problem involving the level of protective measures, denoted as $P_i$, risk denoted as $D_i$, and cost denoted as $C_i$. We solved for these three parameter values for extreme events in North America using scipy and present the results in Figure \ref{social}. We observed that in the face of extreme weather conditions, these three metrics exhibit a positive correlation. The greater the potential loss that may arise from risks, the higher the cost should be for the community's investment in protective measures. An approximate protective level of $70 \%$ is required in relation to the potential losses, with associated costs amounting to around $30 \%$.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\linewidth]{figure/risk.pdf}
+    \caption{Visualization of Community Protection Level, Extreme Weather Risks, and Costs.}
+    \label{social}
+\end{figure}
+\subsubsection{Strategies Employed by Property Owners}
+We utilized the entropy weighting method to model healthcare quality, population size, GDP per capita, and education levels. The results of our model are presented in Table \ref{tab:entropy_weights}.
+\begin{table}[ht]
+\caption{Entropy Weight Method Results for Socio-economic Indicators}
+\centering
+\begin{tabular}{@{}llllll@{}}
+\toprule[1.2pt]
+Indicator & Raw Data & Normalized Value & Entropy Value & Weight \\
+\midrule
+Healthcare Level & 72 & 0.70 & 0.3333 & 0.375 \\
+GDP per Capita & 30,145 & 0.30 & 0.4444 & 0.250 \\
+Population Density & 1,019 & 0.50 & 0.3889 & 0.250 \\
+Education Level & 93 & 0.90 & 0.2778 & 0.125 \\
+\bottomrule[1.2pt]
+\end{tabular}
+\label{tab:entropy_weights}
+\end{table}
+
+Therefore, property owners should consider adopting the following strategies to influence the decisions of insurance companies:
+
+\textbf{Boost GDP per Capita}: Given the higher weight of GDP per capita in the comprehensive assessment of property losses (0.444), property owners can reduce insurance costs by enhancing the region's economic development. This may involve promoting business and industrial growth, attracting investments, and increasing employment rates to mitigate potential property losses.
+
+\textbf{Control Population Density}: Population density also holds considerable importance in decision-making (weight of 0.389). Property owners can take measures to control or strategically plan population density within the region to lower insurance costs. This could include adjustments to urban planning and land-use policies to prevent excessive population density.
+
+\textbf{Enhance Healthcare Quality}: Improving healthcare quality is crucial for reducing casualties during disasters, which is integral to insurance companies' risk assessments. Property owners can invest in healthcare facilities and healthcare infrastructure to elevate the region's healthcare standards, thus decreasing potential property losses.
+
+\textbf{Support Educational Development}: Despite its relatively lower weight (0.278), education level remains a significant factor affecting long-term regional development and residents' quality of life. Property owners can support educational initiatives and advocate for improved education levels to enhance overall quality within the region, subsequently reducing risks and insurance costs.
+
+By implementing these strategies, property owners can influence risk factors within the region to some extent, thereby reducing the potential for higher insurance costs in insurance company decisions, while concurrently elevating the region's overall development level.
+
+
+\subsubsection{The Final Impact of Communities and Property Owners}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\linewidth]{figure/loss.pdf}
+    \caption{depict the potential reduction in property loss achievable through the efforts of both communities and property owners during extreme weather conditions in North America and Asia.}
+    \label{total}
+\end{figure}
+
+The figure in Figure \ref{total} presents property loss scenarios in North America and Asia under different intervention measures from 2024 to 2034. These interventions include "No Intervention," "Community Intervention," and "Property Owner Intervention."
+
+\textbf{Analysis of Property Loss in North America:}
+
+In North America, we can observe the impact of three different intervention levels on property losses. Under "No Intervention," the loss amount increases from 100 units in 2024 to 250 units in 2034. This suggests that without any measures, extreme weather events may lead to a significant increase in property losses over time.
+
+When "Community Intervention" is implemented, the loss amount is 125 units in 2024, increasing to 275 units by 2034. This indicates that community-level intervention measures such as infrastructure development, emergency preparedness, and community education can slow down the growth of property losses.
+
+"Property Owner Intervention" further reduces losses, decreasing from 150 units in 2024 to 225 units in 2034. This implies that measures taken by property owners, such as improving the weather resistance of buildings, purchasing appropriate insurance, and implementing risk management strategies, can more effectively reduce property losses.
+
+\textbf{Analysis of Property Loss in Asia:}
+
+In Asia, property losses under "No Intervention" increase from 175 units in 2024 to 375 units in 2034. This indicates that the rate of property loss growth is faster in Asia compared to North America in the absence of intervention.
+
+"Community Intervention" has a more significant effect in Asia, reducing the loss amount from 200 units in 2024 to 325 units in 2034. This may suggest that community intervention measures in the Asian region, such as collective disaster preparedness and resource sharing, are more effective in reducing losses.
+
+"Property Owner Intervention" is also effective in Asia, with the loss amount decreasing from 225 units in 2024 to 350 units in 2034. This shows that despite the faster rate of loss growth in the Asian region, efforts by property owners, such as investing in disaster-resistant facilities and risk diversification, can still significantly reduce losses.
+
+In conclusion, it can be inferred that interventions by both communities and property owners are crucial for reducing property losses during extreme weather events.
+
+- In North America, both community intervention and property owner intervention effectively slow down the growth of losses, with property owner intervention being more effective in reducing losses.
+
+- In Asia, community intervention shows a more pronounced effect, possibly due to the higher risk of extreme weather events in the region, necessitating closer community cooperation and collective action.
+
+- Over time, whether in North America or Asia, regions implementing intervention measures demonstrate a deceleration in the rate of loss growth, emphasizing the importance of long-term planning and sustained efforts.
+
+To further reduce losses, the following recommendations are suggested:
+
+For North America: Continue to strengthen community and property owner intervention measures, especially in improving building weather resistance and risk management strategies.
+
+For Asia: Given the faster rate of loss growth, prioritize community-level interventions while encouraging property owners to adopt more proactive disaster mitigation measures.
+
+\section{Preservation of Historical Landmarks}
+In this particular problem, we continue to employ a Multi-Scale Spatial Model to characterize the features of buildings in relation to the damage caused by natural disasters. Simultaneously, we extend the risk modeling from Problem 1 and the multi-objective optimization modeling from Problem 2. Specifically, our modeling approach is as follows:
+
+\subsection{Adapting Building Conservation Prioritization to MGWR Model}
+
+To adapt the building conservation prioritization system to a Multiscale Geographically Weighted Regression (MGWR) model, incorporating architectural factors, follow these steps:
+
+\subsubsection{Define Variables}
+Identify the dependent variable (required protection level, categorized into three levels to align with the previous risk levels) and independent variables, including architectural factors such as building size, age, material cost, and structural complexity. Include the geographic coordinates (latitude and longitude) of the buildings.
+
+\subsubsection{Data Collection}
+Gather data relevant to the buildings and their surrounding areas, including architectural details, historical significance, visitor statistics, and potential risks associated with their locations.
+
+\subsubsection{Construct MGWR Model}
+Formulate an MGWR model for each location, utilizing a local regression equation:
+\begin{equation}
+    y_i = \beta_0(u_i, v_i) + \sum_{k=1}^{K} \beta_k(u_i, v_i)X_{ik} + \epsilon_i.
+\end{equation}
+Here, $y_i$ represents the dependent variable for location $i$, $(u_i, v_i)$ denotes the geographic coordinates of the buildings, $X_{ik}$ stands for the independent variables (architectural factors), $\beta_k(u_i, v_i)$ are location-specific coefficients, and $\epsilon_i$ represents the error term.
+Calibrate the MGWR model using statistical software to estimate the $\beta$ coefficients for the buildings.
+
+\subsection{Preserving Historic Architecture: The Case of the Statue of Liberty}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\linewidth]{figure/111.png}
+    \caption{Using the Insurance Industry to Protect the Statue of Liberty}
+    % \label{fig:enter-label}
+\end{figure}
+
+The Statue of Liberty, a symbol of freedom and democracy, is located on Liberty Island in New York Harbor at the coordinates \textbf{40°41'21.30"N, 74°02'40.20"W}. This monumental sculpture, a gift from France to the United States, was dedicated on October 28, 1886, to celebrate the centennial of American independence. Designed by French sculptor Frédéric Auguste Bartholdi and engineered by Gustave Eiffel, the statue stands 46 meters tall and, with its pedestal, reaches a total height of 93 meters. Weighing 225 tons, the Statue of Liberty is a hollow copper structure supported by a steel framework, and it has become an enduring symbol of the United States, welcoming immigrants and embodying the nation's values of liberty and opportunity.
+
+We conducted spatial regression using the MGWR model for the Statue of Liberty, and the average regression coefficient distribution is shown in Figure \ref{fig:radal}. The regression results indicate the following:
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figure/radar.pdf}
+    \caption{The distribution of the regression coefficients for the MGWR model}
+    \label{fig:radal}
+\end{figure}
+\begin{itemize}
+  \item \textbf{Building Size}: Due to the enormous size of the Statue of Liberty, extensive maintenance and protection work is required, necessitating a high level of protection. The coefficient for building size ranges from 0.7 to 1.0.
+
+  \item \textbf{Building Age}: The Statue of Liberty has a relatively old age, with many years of history, requiring a moderate level of protection. The coefficient for building age ranges from 0.5 to 0.7.
+
+  \item \textbf{Material Cost}: The Statue of Liberty uses relatively expensive building materials, demanding high-quality maintenance and repair. The coefficient for material cost ranges from 0.5 to 1.0.
+
+  \item \textbf{Structural Complexity}: The Statue of Liberty's structure is relatively complex, necessitating specialized knowledge and skills for maintenance and protection. The coefficient for structural complexity ranges from 0.5 to 1.0.
+
+  \item \textbf{Geographic Coordinates}: The Statue of Liberty is located in a geographically high-risk area, such as a waterfront or multiple hazard zones, requiring a high level of protection. The coefficient for geographic coordinates ranges from 0.7 to 1.0.
+\end{itemize}
+
+To further refine the insurance pricing model under the consideration of risk, it becomes evident that the Statue of Liberty necessitates the highest level of protection.
+
+\subsection{A Letter to the Community}
+In order to better safeguard the Statue of Liberty, we have drafted a recommendation letter for the community. This letter includes future plans, a timeline, and a cost proposal, which can be found on the attached letterhead at the end of this document.
+
+
+\section{Senitivity Analysis}\label{condition}
+In this section, we conduct a robustness check of our model. Given that our model involves relatively few parameters, with only some hyperparameters manually adjusted in the entropy weighting method, we perform an ablation study on these parameters. We adopt new weighted coefficients, and the relationship between insurance losses and community interventions is presented in Figure \ref{fig:loss2}. We observe that despite changes in the model's parameters, the trend of losses caused by extreme weather events continues to fluctuate and rise. Moreover, the beneficial impact of community interventions consistently exceeds that of individual property owners. This indicates that our model is sufficiently robust, demonstrating consistent performance under different parameter settings.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width = 0.9\linewidth]{figure/loss2.pdf}
+    \caption{Results of the sensitivity analysis for the entropy weighting method}
+    \label{fig:loss2}
+\end{figure}
+
+
+
+\section{ Strengths and Weaknesses}
+\subsection{Strengths}
+\begin{itemize}
+	\item \textbf{Spatial Heterogeneity Consideration:} The model incorporates spatial heterogeneity through the MGWR (Multi-Scale Geographically Weighted Regression), enhancing the precision of predictions and providing insurance companies with a scientific tool for risk assessment.
+        \item \textbf{Risk and Profitability Balance:} The risk-based insurance pricing strategy balances the long-term health of insurance companies with the financial burden on property owners, achieving a balance between social responsibility and economic efficiency through a humanitarian adjustment coefficient and a profitability adjustment factor.
+        \item \textbf{Multi-Objective Optimization:} The model employs a multi-objective optimization strategy to balance humanitarian impact (HI) and profitability (PR), aiding insurance companies in making comprehensive decisions in the face of extreme weather events.
+\end{itemize}
+\subsection{Weaknesses}
+\begin{itemize}
+   \item \textbf{Data Dependency:} The model's accuracy is highly dependent on the quality and completeness of the input data, which could be affected by biases or incompleteness.
+        \item \textbf{Model Complexity:} The MGWR model and associated multi-objective optimization algorithms are complex, requiring specialized knowledge and skills, potentially increasing the difficulty and cost of implementation.
+\end{itemize}
+\subsection{Potential Future Applications}
+\begin{itemize}
+        \item \textbf{Risk Management in the Insurance Industry:} The model can be applied to assess and manage risks associated with extreme weather events, optimizing insurance product design and pricing strategies.
+        \item \textbf{Urban Planning and Disaster Prevention:} Planners can use the model to understand regional risk levels and develop appropriate building standards and disaster prevention measures.
+        \item \textbf{Policy Making and Resource Allocation:} Governments and agencies can use the model's predictive outcomes to formulate effective climate adaptation strategies, allocate resources judiciously, and enhance societal resilience to extreme weather events.
+    \end{itemize}
+
+\section{conclusion}
+ In conclusion, the comprehensive analytical framework presented in this study offers a robust approach to addressing the challenges faced by the property insurance industry under extreme weather conditions. The integration of the Multi-Scale Geographically Weighted Regression (MGWR) model with risk-based insurance pricing strategies and multi-objective optimization techniques has demonstrated the potential to provide insurance companies with a more nuanced understanding of spatial risk patterns and to inform strategic decision-making. The model's ability to balance humanitarian considerations with economic efficiency is a significant advancement in the field of insurance risk assessment.
+
+Despite the model's strengths, it is crucial to acknowledge its dependencies on accurate and comprehensive data, as well as the complexity of the underlying algorithms. Future research and development should focus on refining the model to enhance its predictive accuracy and simplify its implementation, making it more accessible to a broader range of stakeholders. Additionally, the model's application extends beyond the insurance industry, offering valuable insights for urban planners, policymakers, and communities in preparing for and mitigating the impacts of climate change. By leveraging this framework, society can take proactive steps towards building a more resilient future in the face of increasing environmental uncertainties.
+
+\clearpage
+\section*{Letter}\addcontentsline{toc}{section}{Letter}
+	\begin{flushleft}
+		Dear Community,
+	\end{flushleft}
+	
+
+
+Greetings!
+
+After conducting an in-depth analysis of the climatic risks facing the Statue of Liberty, our team, Team xxxxxx, has developed a comprehensive protection plan. Our research indicates that the Statue of Liberty is located in a high-risk area, and factors such as its complex structure, construction materials, and geographical location necessitate the highest level of protective measures. Here are our specific recommendations based on model analysis:
+
+Structural Reinforcement and Maintenance: Considering the size of the Statue of Liberty (46 meters tall, 93 meters including the pedestal) and the cost of materials (copper structure with a steel frame support), we recommend regular structural assessments and maintenance. Given its structural complexity (complexity coefficient ranging from 0.5 to 1.0) and geographical location (location coefficient ranging from 0.7 to 1.0), we suggest at least one comprehensive structural inspection annually, followed by necessary reinforcements based on the findings.
+
+Environmental Monitoring and Emergency Response: We propose the installation of environmental monitoring equipment on Liberty Island to constantly track critical indicators such as wind speed, temperature, and humidity. In the event of extreme weather warnings, we will immediately activate an emergency response plan, which includes, but is not limited to, suspending visitor access, enhancing security patrols, and preparing emergency evacuation routes.
+
+Funding and Resource Allocation: According to our model predictions, approximately \$2.5 million will be required annually for maintenance and emergency responses to ensure the safety of the Statue of Liberty. This funding will be allocated to structural reinforcement, the construction of an environmental monitoring system, and training for the emergency response team.
+
+Public Education and Participation: We plan to initiate public education activities to raise awareness about climate change and the preservation of historical heritage. Through lectures, exhibitions, and interactive experiences, we aim to inspire community members to participate actively and contribute to the protection of the Statue of Liberty.
+
+We believe that these measures will effectively mitigate the impact of extreme weather on the Statue of Liberty, ensuring that it continues to stand as a symbol of freedom and democracy for decades to come. We look forward to collaborating with you to safeguard this invaluable cultural heritage.
+
+Sincerely,
+Team xxxxxx
+\clearpage
+\bibliography{name}
+\bibliographystyle{plain}
+
+
+% \clearpage
+
+\section*{AI Utilization Report}
+In this document, we have employed AI technology, specifically ChatGPT, to enhance various aspects of our content. The illustrations featured in this report were generated using this advanced AI tool, showcasing its capability in creating visually appealing and relevant images. Additionally, ChatGPT was instrumental in refining and polishing the language used throughout the text, ensuring clarity and effectiveness in communication. This demonstrates the versatile application of AI in both visual and textual content creation.
+	
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
