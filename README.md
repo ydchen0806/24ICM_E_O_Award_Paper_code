@@ -45,3 +45,7 @@ Email: cyd0806@mail.ustc.edu.cn
 
 [ydchen0806]
 邮箱：cyd0806@mail.ustc.edu.cn
+
+## ✨Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=ydchen0806/24ICM_E_O_Award_Paper_code&type=Date)](https://star-history.com/#ydchen0806/24ICM_E_O_Award_Paper_code&Date)
